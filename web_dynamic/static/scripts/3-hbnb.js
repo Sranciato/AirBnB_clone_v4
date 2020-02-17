@@ -1,7 +1,7 @@
 const idList = [];
 const nameList = [];
 
-function htmlForPlace (place){
+function htmlForPlace (place) {
   const article = $(`
     <article>
       <div class="title">
@@ -27,17 +27,13 @@ function htmlForPlace (place){
           ${place.number_bathrooms} Bathroom
         </div>
       </div>
-      <div class="user">
-        <strong>Owner: ${users[place.user_id]}</strong>
-      </div>
       <div class="description">
         ${place.description}
       </div>
     </article>
     `);
-    $('.places').append(article)
+  $('.places').append(article);
 }
-
 
 $(() => {
   $('input[type="checkbox"]').click(function () {
@@ -61,11 +57,14 @@ $(() => {
     }
   });
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: 'http://0.0.0.0:5001/api/v1/places_search',
-    data: {},
-    contentType: application/json,
-    success: htmlForPlace(place),
-    dataType: dataType
+    data: '{}',
+    contentType: 'application/json',
+    success: function (response) {
+      for (const place of response) {
+        htmlForPlace(place);
+      }
+    }
   });
 });

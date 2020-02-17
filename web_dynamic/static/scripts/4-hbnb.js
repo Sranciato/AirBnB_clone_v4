@@ -59,12 +59,27 @@ $(() => {
   $.ajax({
     type: 'POST',
     url: 'http://0.0.0.0:5001/api/v1/places_search',
-    data: '{}',
+    data: '{}'
     contentType: 'application/json',
     success: function (response) {
       for (const place of response) {
+        console.log(place);
         htmlForPlace(place);
       }
     }
+  });
+  $('button').click(function(){
+    $.ajax({
+      type: 'POST',
+      url: 'http://0.0.0.0:5001/api/v1/places_search',
+      data: '{"key": "value"}',
+      contentType: 'application/json',
+      success: function (response) {
+        for (const place of response) {
+	  console.log(place);
+          htmlForPlace(place);
+        }
+      }
+    });
   });
 });

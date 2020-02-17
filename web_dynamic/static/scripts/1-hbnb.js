@@ -13,7 +13,7 @@ $(() => {
     if (idList.length < 1) {
       $('.amenities h4').text('\xa0');
     } else {
-      $('.amenities h4').text(nameList);
+      $('.amenities h4').text(nameList.join(', '));
     }
   });
 });

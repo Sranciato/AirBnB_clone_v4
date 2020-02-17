@@ -16,4 +16,10 @@ $(() => {
       $('.amenities h4').text(nameList.join(', '));
     }
   });
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status){
+    if (status === 200)
+    {
+      $('#api_status').addClass('available');
+    }
+  });
 });

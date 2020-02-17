@@ -21,4 +21,12 @@ $(() => {
       $('#api_status').addClass('available');
     }
   });
+  $.ajax({
+    type: "POST",
+    url: 'http://0.0.0.0:5001/api/v1/places_search',
+    data: {},
+    contentType: application/json,
+    success: success,
+    dataType: dataType
+  });
 });

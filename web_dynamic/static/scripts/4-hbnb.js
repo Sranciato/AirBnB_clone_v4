@@ -59,11 +59,10 @@ $(() => {
   $.ajax({
     type: 'POST',
     url: 'http://0.0.0.0:5001/api/v1/places_search',
-    data: '{}'
+    data: '{}',
     contentType: 'application/json',
     success: function (response) {
       for (const place of response) {
-        console.log(place);
         htmlForPlace(place);
       }
     }
@@ -72,11 +71,11 @@ $(() => {
     $.ajax({
       type: 'POST',
       url: 'http://0.0.0.0:5001/api/v1/places_search',
-      data: '{"key": "value"}',
+      data: JSON.stringify({amenities: idList}),
       contentType: 'application/json',
       success: function (response) {
         for (const place of response) {
-	  console.log(place);
+          console.log("on click!")
           htmlForPlace(place);
         }
       }
